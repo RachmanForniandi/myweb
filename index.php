@@ -97,7 +97,7 @@
 			</div>
 
 			<div id="footer">
-				bagian footer
+				Copyright 2017-Rachman Forniandi. Credits for Yukcoding Beta.
 			</div>
 		</div>
 	</body>
