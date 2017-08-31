@@ -23,7 +23,7 @@
 				background-color: #339966;
 				border-top-right-radius: 10px;
 				border-top-left-radius: 10px;
-				border-bottom: 3px solid #339966;
+				border-bottom: 3px solid #336666;
 			}
 
 			#inputan{
