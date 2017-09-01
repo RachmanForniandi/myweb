@@ -1,104 +1,129 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Desain Web dan Menu Dropdown Sederhana</title>
-		<style type="text/css">
-			body{
-				font-family: arial;
-				font-size: 14px;
-			}
+<?php 
+@session_start();
+include "functions/koneksi.php";
 
-			#canvas{
-				width: 960px;
-				margin: 0 auto;
-				border: 1px solid silver;
-			}
+if(@$_SESSION['admin'] || @$_SESSION['user']) {
+?>
 
-			#header{
-				font-size: 20px;
-				padding: 20px;
-			}
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Halaman Utama</title>
+				<style type="text/css">
+					body{
+						font-family: arial;
+						font-size: 14px;
+					}
 
-			#menu{
-				background-color: #0066ff;
-			}
+					#canvas{
+						width: 960px;
+						margin: 0 auto;
+						border: 1px solid silver;
+					}
 
-			#menu ul{
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
+					#header{
+						font-size: 20px;
+						padding: 20px;
+					}
 
-			#menu ul li.utama{
-				display: inline-table;
-			}
+					#menu{
+						background-color: #0066ff;
+					}
 
-			#menu ul li:hover{
-				background-color: #0033cc;
-			}
+					#menu ul{
+						list-style: none;
+						padding: 0;
+						margin: 0;
+					}
 
-			#menu ul li a{
-				display: block;
-				text-decoration: none;
-				line-height: 40px;
-				padding: 0 10px;
-				color: #fff;
-			}
+					#menu ul li.utama{
+						display: inline-table;
+					}
 
-			.utama ul{
-				display: none;
-				position: absolute;
-				z-index: 2;
-			}
+					#menu ul li:hover{
+						background-color: #0033cc;
+					}
 
-			.utama:hover ul{
-				display: block;
-			}
+					#menu ul li a{
+						display: block;
+						text-decoration: none;
+						line-height: 40px;
+						padding: 0 10px;
+						color: #fff;
+					}
 
-			.utama ul li{
-				display: block;
-				background-color: #6cf;
-				width: 140px;
-			}
+					.utama ul{
+						display: none;
+						position: absolute;
+						z-index: 2;
+					}
 
-			#isi{
-				min-height: 400px;
-				padding: 20px;		
-			}
+					.utama:hover ul{
+						display: block;
+					}
 
-			#footer{
-				text-align: center;
-				padding: 20px;
-				background-color: #ccc;	
-			}
-		</style>
-	</head>
-	<body>
-		<div id="canvas">
-			<div id="header">
-				Penjualan Mobil
+					.utama ul li{
+						display: block;
+						background-color: #6cf;
+						width: 140px;
+					}
+
+					#isi{
+						min-height: 400px;
+						padding: 20px;		
+					}
+
+					#footer{
+						text-align: center;
+						padding: 20px;
+						background-color: #ccc;	
+					}
+				</style>
+		</head>
+		<body>
+			<div id="canvas">
+				<div id="header">
+					Penjualan Mobil
+				</div>
+			
+				<div id="menu">
+					<ul>
+						<li class="utama"><a href="">Beranda</a></li>
+						<li class="utama"><a href="">Mobil</a>
+							<ul>
+								<li><a href="">Lihat Data</a></li>
+								<li><a href="">Tambah Data</a></li>
+							</ul>
+						</li>
+						<li class="utama"><a href="">Pelanggan</a>
+							<ul>
+								<li><a href="">Lihat Data</a></li>
+								<li><a href="">Tambah Data</a></li>
+							</ul>
+						</li>
+						<li class="utama"><a href="">Paket Kredit</a>
+							<ul>
+								<li><a href="">Lihat Data</a></li>
+								<li><a href="">Tambah Data</a></li>
+							</ul>
+						</li>
+						<li class="utama" style="float: right;"><a href="functions/logout.php">Logout</a></li>
+					</ul>
+				</div>
+
+				<div id="isi">
+					Selamat datang di halaman utama
+				</div>
+
+				<div id="footer">
+					Copyright 2017-Rachman Forniandi. Credits to Yukcoding Beta.
+				</div>
 			</div>
-		
-			<div id="menu">
-				<ul>
-					<li class="utama"><a href="">Beranda</a></li>
-					<li class="utama"><a href="">Mobil</a>
-						<ul>
-							<li><a href="">Lihat Data</a></li>
-							<li><a href="">Tambah Data</a></li>
-						</ul>
-					</li>
-					<li class="utama"><a href="">Pelanggan</a></li>
-				</ul>
-			</div>
+		</body>
+	</html>
 
-			<div id="isi">
-				bagian isi
-			</div>
-
-			<div id="footer">
-				Copyright 2017-Rachman Forniandi. Credits for Yukcoding Beta.
-			</div>
-		</div>
-	</body>
-</html>
+<?php 
+}else{
+	header("location: login.php");
+}
+?> 
