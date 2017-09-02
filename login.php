@@ -97,10 +97,10 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 									$cek = mysqli_num_rows($sql);
 									if($cek >= 1){
 										if ($data['level'] == "admin") {
-											@$_SESSION['admin'] == $data['kode_user'];
+											@$_SESSION['admin'] = $data['kode_user'];
 											header("location: index.php");
 										}else if ($data['level']== "user") {
-											@$_SESSION['user'] == $data['kode_user'];
+											@$_SESSION['user'] = $data['kode_user'];
 											header("location: index.php");
 										}
 									}else{
