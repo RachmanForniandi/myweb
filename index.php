@@ -88,22 +88,22 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 			
 				<div id="menu">
 					<ul>
-						<li class="utama"><a href="">Beranda</a></li>
+						<li class="utama"><a href="/myweb">Beranda</a></li>
 						<li class="utama"><a href="">Mobil</a>
 							<ul>
-								<li><a href="">Lihat Data</a></li>
-								<li><a href="">Tambah Data</a></li>
+								<li><a href="?page=mobil">Lihat Data</a></li>
+								<li><a href="?page=mobil&action=tambah">Tambah Data</a></li>
 							</ul>
 						</li>
 						<li class="utama"><a href="">Pelanggan</a>
 							<ul>
-								<li><a href="">Lihat Data</a></li>
+								<li><a href="?page=pelanggan">Lihat Data</a></li>
 								<li><a href="">Tambah Data</a></li>
 							</ul>
 						</li>
 						<li class="utama"><a href="">Paket Kredit</a>
 							<ul>
-								<li><a href="">Lihat Data</a></li>
+								<li><a href="?page=kredit">Lihat Data</a></li>
 								<li><a href="">Tambah Data</a></li>
 							</ul>
 						</li>
@@ -112,7 +112,25 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 				</div>
 
 				<div id="isi">
-					Selamat datang di halaman utama
+					<?php 
+					$page = @$_GET['page'];
+					$action = @$_GET['action'];
+					if ($page == "mobil") {
+						if ($action == "") {
+							include "functions/mobil.php";
+						}else if ($action == "tambah") {
+							include "functions/tambah_mobil.php";
+						}	
+					}else if ($page == "pelanggan") {
+						echo "Ini halaman pelanggan";
+					}else if ($page == "kredit") {
+						echo "Ini halaman paket kredit";
+					}else if ($page == "") {
+						echo "Selamat datang di halaman utama";
+					}else{
+						echo "Error 404 !!! Halaman tidak ditemukan";
+					}
+					?>
 				</div>
 
 				<div id="footer">
