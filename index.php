@@ -22,8 +22,8 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 					}
 
 					#header{
+						background-attachment: fixed;
 						font-size: 20px;
-						padding: 20px;
 					}
 
 					#menu{
@@ -70,7 +70,9 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 
 					#isi{
 						min-height: 400px;
-						padding: 20px;		
+						padding: 20px;
+						background-image: url("image/silver_background.png");
+						background-attachment: fixed;		
 					}
 
 					#footer{
@@ -83,7 +85,7 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 		<body>
 			<div id="canvas">
 				<div id="header">
-					Penjualan Mobil
+					<img src="image/banner_theme.png">
 				</div>
 			
 				<div id="menu">
