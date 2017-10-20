@@ -1,12 +1,25 @@
 <fieldset>
 	<legend>Tambah Data Mobil</legend>
-
+	
+	<?php 
+	$carikode = mysqli_query($koneksi,"SELECT max(kode_mobil)FROM tbl_mobil") or die(mysqli_error());
+	$datakode = mysqli_fetch_array($carikode);
+	if ($datakode) {
+		$nilaikode = substr($datakode[0], 1);
+		$kode = (int) $nilaikode;
+		$kode = $kode + 1;
+		$hasilkode = "M".str_pad($kode, 5, "0", STR_PAD_LEFT);
+	}else{
+		$hasilkode = "M00001";
+	}
+	?>
+	
 	<form action="" method="post">
 		<table>
 			<tr>
 				<td>Kode Mobil</td>
 				<td>:</td>
-				<td><input type="text" name="kode_mobil" /></td>
+				<td><input type="text" name="kode_mobil" value="<?php echo $hasilkode ?>" /></td>
 			</tr>
 			<tr>
 				<td>Merk</td>
