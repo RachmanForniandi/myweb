@@ -14,7 +14,7 @@
 	}
 	?>
 	
-	<form action="" method="post">
+	<form action="" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Kode Mobil</td>
@@ -42,6 +42,11 @@
 				<td><input type="text" name="harga" /></td>
 			</tr>
 			<tr>
+				<td>Gambar</td>
+				<td>:</td>
+				<td><input type="file" name="gambar" /></td>
+			</tr>
+			<tr>
 				<td></td>
 				<td></td>
 				<td><input type="submit" name="tambah" value="Tambah" /><input type="reset" value="Reset" /></td>
@@ -55,24 +60,37 @@
 	$type = @$_POST['type'];
 	$warna = @$_POST['warna'];
 	$harga = @$_POST['harga'];
+
+	$sumber = @$_FILES['gambar']['tmp_name'];
+	$target = "image/";
+	$nama_gambar = @$_FILES['gambar']['name'];
 	
 	$tambah_mobil = @$_POST['tambah'];
 
 	if ($tambah_mobil) {
-		if ($kode_mobil == "" || $merk == "" || $type == "" || $warna== "" || $harga == "") {
+		if ($kode_mobil == "" || $merk == "" || $type == "" || $warna== "" || $harga == "" || $nama_gambar == "") {
 			?>
 			<script type="text/javascript">
 			alert("Input data tidak boleh ada yang kosong") ;
 			</script>
 			<?php
 		}else{
-			mysqli_query($koneksi,"INSERT INTO tbl_mobil VALUES('$kode_mobil','$merk','$type','$warna','$harga')")or die(mysqli_error());
-			?>
-			<script type="text/javascript">
-			alert("tambah data mobil baru berhasil");
-			window.location.href="?page=mobil";
-			</script>
-			<?php
+				$pindah = move_uploaded_file($sumber, $target.$nama_gambar);
+				if ($pindah) {	
+					mysqli_query($koneksi,"INSERT INTO tbl_mobil VALUES('$kode_mobil','$merk','$type','$warna','$harga','$nama_gambar')")or die(mysqli_error());
+				?>
+				<script type="text/javascript">
+				alert("tambah data mobil baru berhasil");
+				window.location.href="?page=mobil";
+				</script>
+				<?php
+			}else{
+				?>
+				<script type="text/javascript">
+				alert("Gambar gagal diupload");
+				</script>
+				<?php
+			}
 		}
 	}
 	?>

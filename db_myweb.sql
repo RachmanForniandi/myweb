@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2017 at 06:34 AM
+-- Generation Time: Oct 21, 2017 at 03:36 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -31,16 +31,16 @@ CREATE TABLE `tbl_mobil` (
   `merk` varchar(30) NOT NULL,
   `type` varchar(25) NOT NULL,
   `warna` varchar(30) NOT NULL,
-  `harga` varchar(25) NOT NULL
+  `harga` varchar(25) NOT NULL,
+  `gambar` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_mobil`
 --
 
-INSERT INTO `tbl_mobil` (`kode_mobil`, `merk`, `type`, `warna`, `harga`) VALUES
-('H00091', 'Mitsubishi', 'Outlander Sport', 'Crimson Red', '70000000'),
-('M0001', 'Honda', 'Jazz', 'Silver', '100000000');
+INSERT INTO `tbl_mobil` (`kode_mobil`, `merk`, `type`, `warna`, `harga`, `gambar`) VALUES
+('M00000', 'Honda', 'HR-V', 'Blue', '115000000', 'HRV-SPORT-Morpho-Blue.png');
 
 -- --------------------------------------------------------
 

@@ -7,7 +7,8 @@
 				<th>Merk</th>
 				<th>Type</th>
 				<th>Warna</th>
-				<th>Harga</th>
+				<th>Harga(Rp)</th>
+				<th>Gambar</th>
 				<th>Opsi</th>
 			</tr>
 			<?php 
@@ -20,6 +21,7 @@
 					<td><?php echo $data['type']; ?></td>
 					<td><?php echo $data['warna']; ?></td>
 					<td><?php echo $data['harga']; ?></td>
+					<td align="center"><img src="image/<?php echo $data['gambar'];?>" width ="120px"/></td>
 					<td align="center"><button>Edit</button><button>Hapus</button></td>
 				</tr>
 			<?php 
