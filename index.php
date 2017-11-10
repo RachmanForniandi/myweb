@@ -122,7 +122,11 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 							include "functions/mobil.php";
 						}else if ($action == "tambah") {
 							include "functions/tambah_mobil.php";
-						}	
+						}else if ($action == "edit") {
+							include "functions/edit_mobil.php";
+						}else if ($action == "hapus") {
+							include "functions/hapus_mobil.php";
+						}		
 					}else if ($page == "pelanggan") {
 						echo "Ini halaman pelanggan";
 					}else if ($page == "kredit") {

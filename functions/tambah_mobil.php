@@ -49,7 +49,7 @@
 			<tr>
 				<td></td>
 				<td></td>
-				<td><input type="submit" name="tambah" value="Tambah" /><input type="reset" value="Reset" /></td>
+				<td><input type="submit" name="tambah" value="Tambah" /><input type="reset" value="Batal" /></td>
 			</tr>
 		</table>
 	</form>

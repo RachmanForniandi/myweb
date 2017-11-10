@@ -22,7 +22,10 @@
 					<td><?php echo $data['warna']; ?></td>
 					<td><?php echo $data['harga']; ?></td>
 					<td align="center"><img src="image/<?php echo $data['gambar'];?>" width ="120px"/></td>
-					<td align="center"><button>Edit</button><button>Hapus</button></td>
+					<td align="center">
+						<a href="?page=mobil&action=edit&kdmobil=<?php echo $data['kode_mobil']; ?>"><button>Edit</button></a>
+						<a onclick="return confirm('Yakin anda ingin menghapus data ini ?')" href="?page=mobil&action=hapus&kdmobil=<?php echo $data['kode_mobil']; ?>"><button>Hapus</button></a>
+					</td>
 				</tr>
 			<?php 
 			}
