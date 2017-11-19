@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2017 at 12:30 PM
+-- Generation Time: Nov 19, 2017 at 06:58 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -41,7 +41,10 @@ CREATE TABLE `tbl_mobil` (
 
 INSERT INTO `tbl_mobil` (`kode_mobil`, `merk`, `type`, `warna`, `harga`, `gambar`) VALUES
 ('M00000', 'Honda', 'HR-V', 'Blue', '115000000', 'HRV-SPORT-Morpho-Blue.png'),
-('M00001', 'Neo Honda', 'Jazz', 'orange', '65000000', 'c3.jpg');
+('M00001', 'Neo Honda', 'Jazz', 'orange', '65000000', 'c3.jpg'),
+('M00002', 'Subaru', 'WRX STI L', 'Blue', '67000000', 'Subaru_WRX_STI_L_1.jpg'),
+('M00003', 'Mitsubishi', 'Pajero Sport', 'Dark Metallic', '73000000', 'mitsubishi-pajero-sport.jpg'),
+('M00004', 'Toyota', 'Avanza', 'Red', '55000000', 'colors_avanza_red.jpg');
 
 -- --------------------------------------------------------
 

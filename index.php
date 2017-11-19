@@ -9,80 +9,10 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 	<html>
 		<head>
 			<title>Halaman Utama</title>
-				<style type="text/css">
-					body{
-						font-family: arial;
-						font-size: 14px;
-					}
-
-					#canvas{
-						width: 960px;
-						margin: 0 auto;
-						border: 1px solid silver;
-					}
-
-					#header{
-						background-attachment: fixed;
-						font-size: 20px;
-					}
-
-					#menu{
-						background-color: #0066ff;
-					}
-
-					#menu ul{
-						list-style: none;
-						padding: 0;
-						margin: 0;
-					}
-
-					#menu ul li.utama{
-						display: inline-table;
-					}
-
-					#menu ul li:hover{
-						background-color: #0033cc;
-					}
-
-					#menu ul li a{
-						display: block;
-						text-decoration: none;
-						line-height: 40px;
-						padding: 0 10px;
-						color: #fff;
-					}
-
-					.utama ul{
-						display: none;
-						position: absolute;
-						z-index: 2;
-					}
-
-					.utama:hover ul{
-						display: block;
-					}
-
-					.utama ul li{
-						display: block;
-						background-color: #6cf;
-						width: 140px;
-					}
-
-					#isi{
-						min-height: 400px;
-						padding: 20px;
-						background-image: url("image/silver_background.png");
-						background-attachment: fixed;		
-					}
-
-					#footer{
-						text-align: center;
-						padding: 20px;
-						background-color: #ccc;	
-					}
-				</style>
+			<link rel="stylesheet" href="css/main.css"/> 
 		</head>
 		<body>
+
 			<div id="canvas">
 				<div id="header">
 					<img src="image/banner_theme.png">
@@ -109,7 +39,19 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 								<li><a href="">Tambah Data</a></li>
 							</ul>
 						</li>
-						<li class="utama" style="float: right;"><a href="functions/logout.php">Logout</a></li>
+						<li class="utama right" style="background-color: #f60;"><a href="functions/logout.php">Logout</a></li>
+						<li class="utama right">
+							<?php 
+								if (@$_SESSION['admin']) {
+									$user_terlogin = @$_SESSION['admin'];
+								}else if(@$_SESSION['user']){
+									$user_terlogin = @$_SESSION['user'];
+								}
+								$sql_user = mysqli_query($koneksi,"SELECT * FROM tbl_user WHERE kode_user='$user_terlogin'") OR DIE(mysqli_error);
+								$data_user = mysqli_fetch_array($sql_user);
+							?>
+							<a>Selamat datang, <?php echo $data_user['nama_lengkap']; ?></a>
+						</li>
 					</ul>
 				</div>
 
