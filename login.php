@@ -2,67 +2,18 @@
 @session_start();
 include "functions/koneksi.php";
 
-if(@$_SESSION['admin'] || @$_SESSION['user']) {
+if(@$_SESSION['admin']) {
 	header("location: index.php");
-}else{
+}else if (@$_SESSION['user']) {
+	header("location:user/index.php");
+}
 ?>
 
 	<!DOCTYPE html>
 	<html>
 		<head>
 			<title>Halaman Login</title>
-			<style type="text/css">
-				body{
-					font-family: arial;
-					font-size: 14px;
-					background-color: #222;
-				}
-
-				#utama{
-					width: 300px;
-					margin: 0 auto;
-					margin-top: 12%;
-				}
-
-				#judul{
-					padding: 15px;
-					text-align: center;
-					color: #fff;
-					font-size: 20px;
-					background-color: #339966;
-					border-top-right-radius: 10px;
-					border-top-left-radius: 10px;
-					border-bottom: 3px solid #336666;
-				}
-
-				#inputan{
-					background-color: #ccc;
-					padding: 20px;
-					border-bottom-right-radius: 10px;
-					border-bottom-left-radius: 10px;
-				}
-
-				input{
-					padding: 10px;
-					border: 0;
-				}
-
-				.lg{
-					width: 240px;
-				}
-
-				.btn{
-					background-color: #339966;
-					border-radius: 10px;
-					color: #fff;
-				}
-
-				.btn:hover{
-					background-color: #339966;
-					cursor: pointer;
-				}
-
-			</style>
+			<link rel="stylesheet" href="css/style.css">
 		</head>
 		<body>
 				<div id="utama">
@@ -73,18 +24,21 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 					<div id="inputan">
 						<form action="" method="POST">
 							<div>
-								<input type="text" name="user" placeholder="Username" class="lg">
+								<input type="text" name="username" placeholder="Username" class="lg">
 							</div>
 							<div style="margin-top: 10px;">
-								<input type="password" name="password" placeholder="password" class="lg">
+								<input type="password" name="password" placeholder="Password" class="lg">
 							</div>
 							<div style="margin-top: 10px;">
 								<input type="submit" name="login" value="login" class="btn">
+								<span style='margin-left: 130px;'>
+									<a href='register.php' class="btn-right">Register</a>
+								</span>
 							</div>
 						</form>
 
 						<?php
-							$user = @$_POST['user'];
+							$user = @$_POST['username'];
 							$pass = @$_POST['password'];
 							$login = @$_POST['login'];
 
@@ -101,7 +55,7 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 											header("location: index.php");
 										}else if ($data['level']== "user") {
 											@$_SESSION['user'] = $data['kode_user'];
-											header("location: index.php");
+											header("location: user/index.php");
 										}
 									}else{
 										echo "Login gagal. Silahkan coba lagi.";
@@ -114,7 +68,6 @@ if(@$_SESSION['admin'] || @$_SESSION['user']) {
 		</body>
 	</html>
 
-<?php 
-}
+
 ?>
 

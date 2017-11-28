@@ -2,13 +2,13 @@
 @session_start();
 include "functions/koneksi.php";
 
-if(@$_SESSION['admin'] || @$_SESSION['user']) {
+if(@$_SESSION['admin']) {
 ?>
 
 	<!DOCTYPE html>
 	<html>
 		<head>
-			<title>Halaman Utama</title>
+			<title>Halaman Admin</title>
 			<link rel="stylesheet" href="css/main.css"/> 
 		</head>
 		<body>
