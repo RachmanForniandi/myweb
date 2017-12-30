@@ -60,4 +60,7 @@
 			}
 			?>
 		</table>
+		<div style="padding-top: 10px">
+			<a href="laporan/cetak.php" target="_blank"><button>Cetak</button></a>
+		</div>
 </fieldset>
