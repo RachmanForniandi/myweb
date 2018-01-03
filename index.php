@@ -21,24 +21,41 @@ if(@$_SESSION['admin'] || @$_SESSION['user']  ) {
 				<div id="menu">
 					<ul>
 						<li class="utama"><a href="/myweb">Beranda</a></li>
-						<li class="utama"><a href="">Mobil</a>
+						<?php
+						if (@$_SESSION['admin']) { ?>
+						 	<li class="utama"><a href="">Mobil</a>
 							<ul>
 								<li><a href="?page=mobil">Lihat Data</a></li>
 								<li><a href="?page=mobil&action=tambah">Tambah Data</a></li>
 							</ul>
 						</li>
+						<?php } ?>
+						
+						<?php
+						if (@$_SESSION['admin']) { ?>
 						<li class="utama"><a href="">Pelanggan</a>
 							<ul>
 								<li><a href="?page=pelanggan">Lihat Data</a></li>
 								<li><a href="?page=pelanggan&action=tambah">Tambah Data</a></li>
 							</ul>
 						</li>
-						<li class="utama"><a href="">Paket Kredit</a>
-							<ul>
-								<li><a href="?page=kredit">Lihat Data</a></li>
-								<li><a href="">Tambah Data</a></li>
-							</ul>
+						<?php } ?>
+						
+						<?php
+						if (@$_SESSION['admin']) { ?>
+						<li class="utama"><a href="">Paket Kredit</a></li>
+						<?php } ?>
+
+						<?php
+						if (@$_SESSION['admin']) { ?>
+						<li class="utama"><a href="">Transaksi</a>
+								<ul>
+									<li><a href="">Beli Tunai</a></li>
+									<li><a href="">Beli Kredit</a></li>
+								</ul>
 						</li>
+						<?php } ?>
+
 						<li class="utama right" style="background-color: #f60;"><a href="functions/logout.php">Logout</a></li>
 						<li class="utama right">
 							<?php 
@@ -60,15 +77,19 @@ if(@$_SESSION['admin'] || @$_SESSION['user']  ) {
 					$page = @$_GET['page'];
 					$action = @$_GET['action'];
 					if ($page == "mobil") {
-						if ($action == "") {
-							include "functions/mobil.php";
-						}else if ($action == "tambah") {
-							include "functions/tambah_mobil.php";
-						}else if ($action == "edit") {
-							include "functions/edit_mobil.php";
-						}else if ($action == "hapus") {
-							include "functions/hapus_mobil.php";
-						}		
+						if (@$_SESSION['admin']) { 
+							if ($action == "") {
+								include "functions/mobil.php";
+							}else if ($action == "tambah") {
+								include "functions/tambah_mobil.php";
+							}else if ($action == "edit") {
+								include "functions/edit_mobil.php";
+							}else if ($action == "hapus") {
+								include "functions/hapus_mobil.php";
+							}
+						  }else{
+						  	echo "Anda tidak punya hak akses pada halaman ini!";
+						  }		
 					}else if ($page == "pelanggan") {
 						if ($action == "") {
 							include "functions/pelanggan.php";
