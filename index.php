@@ -2,7 +2,7 @@
 @session_start();
 include "functions/koneksi.php";
 
-if(@$_SESSION['admin']) {
+if(@$_SESSION['admin'] || @$_SESSION['user']  ) {
 ?>
 
 	<!DOCTYPE html>
@@ -30,7 +30,7 @@ if(@$_SESSION['admin']) {
 						<li class="utama"><a href="">Pelanggan</a>
 							<ul>
 								<li><a href="?page=pelanggan">Lihat Data</a></li>
-								<li><a href="">Tambah Data</a></li>
+								<li><a href="?page=pelanggan&action=tambah">Tambah Data</a></li>
 							</ul>
 						</li>
 						<li class="utama"><a href="">Paket Kredit</a>
@@ -47,7 +47,7 @@ if(@$_SESSION['admin']) {
 								}else if(@$_SESSION['user']){
 									$user_terlogin = @$_SESSION['user'];
 								}
-								$sql_user = mysqli_query($koneksi,"SELECT * FROM tbl_user WHERE kode_user='$user_terlogin'") OR DIE(mysqli_error);
+								$sql_user = mysqli_query($koneksi,"SELECT * FROM tbl_user WHERE kode_user='$user_terlogin'") OR DIE(mysqli_error());
 								$data_user = mysqli_fetch_array($sql_user);
 							?>
 							<a>Selamat datang, <?php echo $data_user['nama_lengkap']; ?></a>
@@ -70,9 +70,15 @@ if(@$_SESSION['admin']) {
 							include "functions/hapus_mobil.php";
 						}		
 					}else if ($page == "pelanggan") {
-						echo "Ini halaman pelanggan";
-					}else if ($page == "kredit") {
-						echo "Ini halaman paket kredit";
+						if ($action == "") {
+							include "functions/pelanggan.php";
+						}else if ($action == "tambah") {
+							include "functions/tambah_pelanggan.php";
+						}else if ($action == "hapus") {
+							$ID = @$_GET['ID'];
+							mysqli_query("DELETE FROM tbl_pelanggan WHERE no_id = '$ID'")or die (mysqli_error());
+							echo '<script type="text/javascript">window.location.href="?page=pelanggan";</script>';
+						}
 					}else if ($page == "") {
 						echo "Selamat datang di halaman utama";
 					}else{
@@ -87,7 +93,6 @@ if(@$_SESSION['admin']) {
 			</div>
 		</body>
 	</html>
-
 <?php 
 }else{
 	header("location: login.php");
