@@ -55,7 +55,7 @@ if(@$_SESSION['admin']) {
 											header("location: index.php");
 										}else if ($data['level']== "user") {
 											@$_SESSION['user'] = $data['kode_user'];
-											header("location: user/index.php");
+											header("location: index.php");
 										}
 									}else{
 										echo "Login gagal. Silahkan coba lagi.";
