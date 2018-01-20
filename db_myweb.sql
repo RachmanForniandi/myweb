@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2018 at 02:13 AM
+-- Generation Time: Jan 20, 2018 at 01:59 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -43,8 +43,7 @@ INSERT INTO `tbl_mobil` (`kode_mobil`, `merk`, `type`, `warna`, `harga`, `gambar
 ('M00000', 'Honda', 'HR-V', 'Blue', '115000000', 'HRV-SPORT-Morpho-Blue.png'),
 ('M00001', 'Neo Honda', 'Jazz', 'orange', '65000000', 'c3.jpg'),
 ('M00002', 'Subaru', 'WRX STI L', 'Blue', '67000000', 'Subaru_WRX_STI_L_1.jpg'),
-('M00003', 'Mitsubishi', 'Pajero Sport', 'Dark Metallic', '73000000', 'mitsubishi-pajero-sport.jpg'),
-('M00004', 'Toyota', 'Avanza', 'Red', '55000000', 'colors_avanza_red.jpg');
+('M00003', 'Mitsubishi', 'Pajero Sport', 'Dark Metallic', '73000000', 'mitsubishi-pajero-sport.jpg');
 
 -- --------------------------------------------------------
 
@@ -83,6 +82,7 @@ CREATE TABLE `tbl_user` (
   `kode_user` int(11) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL,
+  `pass` varchar(40) NOT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan') NOT NULL,
   `alamat` text NOT NULL,
@@ -93,11 +93,10 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`kode_user`, `username`, `password`, `nama_lengkap`, `jenis_kelamin`, `alamat`, `level`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Rachman Forniandi', 'Laki-laki', 'Bintaro Jaya, Tangsel', 'admin'),
-(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'Rachman Ridwan', 'Laki-laki', 'Bintaro Jaya, Tangsel', 'user'),
-(3, 'firda', '7aa1dfee8619ac8f282e296d83eb55ff', 'Firda Ayuwima', 'Perempuan', 'Bintaro Jaya, Tangsel', 'user'),
-(4, 'Elynna', '1fff98efa47fdf3d03840631924ced30', 'Elynna Michella', 'Perempuan', 'Cengkareng, Jakarta Barat', 'user');
+INSERT INTO `tbl_user` (`kode_user`, `username`, `password`, `pass`, `nama_lengkap`, `jenis_kelamin`, `alamat`, `level`) VALUES
+(1, '', 'd41d8cd98f00b204e9800998ecf8427e', '', '', '', '', 'admin'),
+(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', 'Rachman Ridwan', 'Laki-laki', 'Bintaro Jaya, Tangsel', 'user'),
+(5, 'Firda', '7aa1dfee8619ac8f282e296d83eb55ff', 'meong', 'Firda Ayuwima', 'Perempuan', 'Bintaro Jaya, Tangerang Selatan', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -123,7 +122,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `kode_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kode_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

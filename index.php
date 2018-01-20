@@ -1,6 +1,7 @@
 <?php 
 @session_start();
 include "functions/koneksi.php";
+ob_start();
 
 if(@$_SESSION['admin'] || @$_SESSION['user']  ) {
 ?>
@@ -67,7 +68,10 @@ if(@$_SESSION['admin'] || @$_SESSION['user']  ) {
 								$sql_user = mysqli_query($koneksi,"SELECT * FROM tbl_user WHERE kode_user='$user_terlogin'") OR DIE(mysqli_error());
 								$data_user = mysqli_fetch_array($sql_user);
 							?>
-							<a>Selamat datang, <?php echo $data_user['nama_lengkap']; ?></a>
+							<a>Welcome, <?php echo $data_user['username']; ?></a>
+							<ul>
+								<li><a href="?page=editprofil">Edit Profil</a></li>
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -100,6 +104,8 @@ if(@$_SESSION['admin'] || @$_SESSION['user']  ) {
 							mysqli_query("DELETE FROM tbl_pelanggan WHERE no_id = '$ID'")or die (mysqli_error());
 							echo '<script type="text/javascript">window.location.href="?page=pelanggan";</script>';
 						}
+					}else if ($page == "editprofil") {
+						include "functions/edit_profile.php";
 					}else if ($page == "") {
 						echo "Selamat datang di halaman utama";
 					}else{
@@ -109,7 +115,7 @@ if(@$_SESSION['admin'] || @$_SESSION['user']  ) {
 				</div>
 
 				<div id="footer">
-					Copyright 2017-Rachman Forniandi. Credits to Yukcoding Beta.
+					Copyright 2017-Rachman Forniandi. Courtesy to https://yukcoding.blogspot.com .
 				</div>
 			</div>
 		</body>
